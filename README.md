@@ -8,4 +8,8 @@ Pasos de Instalar el app search movie
 5. Luego guardar el archivo que modifico
 6. poner en el comando de la carpeta search-movies en el siguiente comando en la terminal  ```npm start```
 
+El app esta finalizada monte al servidor pueden navegar la aplicacion URL: http://buscador-movies.surge.sh/ 
+
  NO OLVIDEN DE INSTALAR EN LA CONSOLA ```npm install``` para crear la libreria ```/node_modules```
+
+ ## ESPERO QUE LE GUSTEN :)

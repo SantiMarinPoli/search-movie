@@ -1,59 +1,31 @@
-import React, { Component } from 'react';
-import { Title } from './components/title'
-import { SearchForm } from './components/searchForm'
-import { MoviesList } from './components/moviesList'
-import { Detail } from './pages/detail'
+import React, {Component} from 'react';
+import {Switch,Route} from 'react-router-dom'
+
+import {Home} from './pages/home'
+import {Detail} from './pages/detail'
+import {NotFound} from './pages/notFound'
+
 import './App.css';
 import 'bulma/css/bulma.css'
 
 class App extends Component {
 
-    state = { userSearch: false, results: [] }
+  // /detail/123 id: de la pelicula asignada
 
-    _handleResults = (results) => {
-        this.setState({ results, userSearch: true }) //cuando el resultado esta encontrado el dato del api que estamos asignamos entra el setState 
-    }
+  render() {
+    return (
+      <div className="App">
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/detail/:movieId' component={Detail} />
+          <Route component={NotFound} />
+        </Switch>
+          
+      </div>
+    )
 
-    _renderResults() { //estamos validando si esta llegando el dato de la pelicula
-        return this.state.results.length === 0 ?
-            < p > Sorry Results Not Found < /p> :
-            < MoviesList movies = { this.state.results }
-        />
 
-    }
-
-    render() {
-        const url = new URL(document.location)
-        const hasId = url.searchParams.has('id')
-
-        if (hasId) {
-            return ( <
-                Detail / >
-            )
-
-        }
-
-        return ( <
-            div className = "App" >
-            <
-            Title > Search Movies < /Title> <
-            div className = "SearchForm-wrapper" >
-            <
-            SearchForm onResults = { this._handleResults }
-            />  <
-            /div>
-
-            {
-                this.state.userSearch ?
-                    this._renderResults() :
-                    < small > Use the form to search a movie < /small>
-            }
-
-            <
-            /div>
-        );
-
-    }
+  }
 
 }
 
